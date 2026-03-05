@@ -15,23 +15,26 @@ Demonstrates how **encoding formats** ensure safe data transmission across moder
 ### Task Structure
 ```
 Task1/
-Task1/
-├── README.md # This file
-├── Scripts/ 
-│ ├── Base64_encode.sh # Bash script for Base64 encoding
-│ ├── Url_Encoding.py # Python script for URL encoding
-│ └── Docker_file_transfer.cmd 
-└── diagrams/
-  ├── ASCII Encoding.png 
-  ├── Bas64 Encoding in docker.png
-  ├── URL Encoding in docker.png
-  ├── URL-Encoding of Form Data in HTTP POST Request.png
-  ├── Creating and Serving a File in a Docker Container.png 
-  ├── Downloading the File from Another Docker Container.png
-  ├── HTTP Request Headers with Base64-Encoded Credentials over HTTPS.png
-  ├── Decoding the Bas64 Credentials.png
-  ├── Base64-encoded email attachment transmitted via SMTP over TLS.png
-  └── Base64 encoding in email transmission.png
+├── README.md                 # Main documentation 
+├── images/                 
+│   ├── base64-docker.png     # Figure 1
+│   ├── url-docker.png        # Figure 2
+│   ├── http-post.png         # Figure 3
+│   ├── https-tls-flow.png    # Figure 4
+│   ├── docker-server.png     # Figure 5
+│   ├── docker-client.png     # Figure 6
+│   ├── http-headers.png      # Figure 7
+│   ├── base64-decode.png     # Figure 8
+│   ├── email-base64.png      # Figure 9
+│   ├── smtp-tls.png          # Figure 10
+│   ├── rest-api.png          # Figure 11
+│   ├── oauth-request.png     # Figure 12
+│   └── oauth-response.png    # Figure 13
+│
+└── Scripts/ 
+  ├── Base64_encode.sh # Bash script for Base64 encoding
+  ├── Url_Encoding.py # Python script for URL encoding
+  └── Docker_file_transfer.cmd # file transfer in docker
 ```
 
 ## Encoding Formats Covered
