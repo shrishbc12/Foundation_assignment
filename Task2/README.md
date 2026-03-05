@@ -36,7 +36,7 @@ task2/
 
 ### Classroom Seating Scenario
 
-![Classroom Seating Problem](images/seating-scenario.png)
+![Classroom Seating Problem](Images/seating-scenario.png)
 
 **Why Checking is Easy (P):**
 - Teacher simply walks through the row and checks each pair of adjacent students
