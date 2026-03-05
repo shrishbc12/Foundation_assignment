@@ -96,6 +96,7 @@ Includes:
 - SELECT (viewing all records)
 
 ### JOIN Operation
+
 Output file: [`Output/join_operation_output.txt`](Output/join_operation_output.txt)
 
 ```sql
@@ -105,6 +106,11 @@ JOIN Student s ON m.StudentID = s.StudentID
 JOIN Club c ON m.ClubID = c.ClubID;
 ORDER BY s.StudentName, m.JoinDate;
 ```
+### Why JOIN Operations Are Necessary
+After normalization, data is split across tables:
+- Student table - Student details only
+- Club table - Club details only
+- Membership table - Who joined which club
 
 ## Set Operations with Venn Diagrams
 ### 1. UNION - Students in Either Club
@@ -179,3 +185,11 @@ WHERE c.ClubName = 'Sports Club';
 |UNION	  |∪	|All students in either club|	Asha, Bikash, Nisha, Suman, Pooja|
 |INTERSECT|	∩	|Students in both clubs|	Asha|
 |EXCEPT	|-	|Students in first but not second	|Asha, Bikash, Nisha, Suman|
+
+## Why JOIN Operations Are Necessary
+After normalization, data is split across tables:
+- Student table - Student details only
+- Club table - Club details only
+- Membership table - Who joined which club
+
+To get complete information, we need JOIN: Student, Memebrship and Club
