@@ -71,6 +71,9 @@ cd Scripts
 python Heuristic.py
 ```
 
-### Factorial Growth (n!)
+## Output
+**Brute Force (for 4 students)**
+![brute force seating](Images/brute-force-output.png)
 
-The time required grows factorially:
+**Heuristic**
+![Heuristic seating](Images/heuristic-output.png)
