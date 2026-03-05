@@ -1,13 +1,29 @@
-# Task 3 – Database Normalization and Optimization
+# Task 3 – Database Normalization & Optimization
+
+A comprehensive demonstration of database normalization (1NF, 2NF, 3NF) and SQL operations using MySQL. This project simulates a **College Club Membership Management** system to eliminate redundancy and improve data integrity.
+
+---
 
 ## Overview
-This repository demonstrates database normalization concepts through a **College Club Membership Management** scenario, showing how to eliminate redundancy and improve data integrity using 1NF, 2NF, and 3NF.
 
-**Problem:** A denormalized table storing student club memberships causes:
-- Data redundancy
-- Update anomalies
-- Insertion anomalies
-- Deletion anomalies
+This project demonstrates:
+
+- **Database Normalization**: Progressive transformation from denormalized table through 1NF, 2NF, and 3NF
+- **SQL Operations**: Basic operations (INSERT, SELECT), JOINs, and Set Operations (UNION, INTERSECT, EXCEPT)
+- **Visual Representation**: ER Diagrams and Venn diagrams for set operations
+- **Real-world Application**: College club membership management simulation
+
+---
+
+## Learning Objectives
+
+- Identify data redundancy and anomalies in denormalized tables
+- Apply First, Second, and Third Normal Forms
+- Implement normalized schemas using SQL
+- Understand JOIN operations to recombine normalized data
+- Visualize set operations using Venn diagrams
+
+---
 
 ## Repository Structure
 ```
@@ -42,19 +58,72 @@ task3/
 └── set_operations.sql # UNION, INTERSECT, EXCEPT queries
 ```
 
+---
 
-## Original Problem - Denormalized Table
+## Quick Start
 
-The original table had the following problems:
+### 1. Clone the Repository
+```bash
+git clone https://github.com/shrishbc12/Foundation_assignment.git
+cd task3
+```
+### 2. Start MySQL Container
+```bash
+docker run --name college_db \
+  -e MYSQL_ROOT_PASSWORD=root123 \
+  -e MYSQL_DATABASE=college_club \
+  -d -p 3306:3306 \
+  mysql:8.0
+```
+### 3. Execute SQL Scripts
+```bash
+# Create tables
+docker exec -i college_db mysql -uroot -proot123 college_club < sql/create_tables.sql
 
-| Problem | Example | Impact |
-|---------|---------|--------|
-| **Data Redundancy** | Asha's name appears twice (Music & Sports club) | Wasted storage, inconsistency risk |
-| **Update Anomaly** | Changing Music Club mentor requires updating 3 rows | Inconsistent data if one row missed |
-| **Insertion Anomaly** | Can't add Photography Club without a student | Unrealistic restriction |
-| **Deletion Anomaly** | Deleting Aman removes Coding Club info completely | Loss of club data |
+# Run normalization steps
+docker exec -i college_db mysql -uroot -proot123 college_club < sql/normalization_steps.sql
 
-## Normalization Process
+# Basic SQL operations
+docker exec -i college_db mysql -uroot -proot123 college_club < sql/Basic_sql_operations.sql
+
+# JOIN queries
+docker exec -i college_db mysql -uroot -proot123 college_club < sql/join_queries.sql
+
+# Set operations
+docker exec -i college_db mysql -uroot -proot123 college_club < sql/set_operations.sql
+```
+### 4. Verify Results
+```bash
+# Check Student table
+docker exec college_db mysql -uroot -proot123 -t college_club -e "SELECT * FROM Student;"
+
+# Check Club table
+docker exec college_db mysql -uroot -proot123 -t college_club -e "SELECT * FROM Club;"
+
+# Check Membership table
+docker exec college_db mysql -uroot -proot123 -t college_club -e "SELECT * FROM Membership;"
+```
+
+## Database Schema Evolution
+### Unnormalized Form (Problem Table)
+| StudentID | StudentName | Email           | ClubName     | ClubRoom | ClubMentor | JoinDate    |
+|-----------|------------|----------------|-------------|---------|------------|------------|
+| 1         | Asha       | asha@email.com | Music Club  | R101    | Mr. Raman  | 2024-01-10 |
+| 2         | Bikash     | bikash@email.com | Sports Club | R202    | Ms. Sita   | 2024-01-12 |
+| 1         | Asha       | asha@email.com | Sports Club | R202    | Ms. Sita   | 2024-01-15 |
+| 3         | Nisha      | nisha@email.com | Music Club  | R101    | Mr. Raman  | 2024-01-20 |
+| 4         | Rohan      | rohan@email.com | Drama Club  | R303    | Mr. Kiran  | 2024-01-18 |
+| 5         | Suman      | suman@email.com | Music Club  | R101    | Mr. Raman  | 2024-01-22 |
+| 2         | Bikash     | bikash@email.com | Drama Club  | R303    | Mr. Kiran  | 2024-01-25 |
+| 6         | Pooja      | pooja@email.com | Sports Club | R202    | Ms. Sita   | 2024-01-27 |
+| 3         | Nisha      | nisha@email.com | Coding Club | Lab1    | Mr. Anil   | 2024-01-28 |
+| 7         | Aman       | aman@email.com | Coding Club | Lab1    | Mr. Anil   | 2024-01-30 |
+
+### Problems Identified:
+- Data Redundancy: Asha's name appears twice
+- Update Anomaly: Changing mentor requires multiple updates
+- Insertion Anomaly: Can't add club without student
+- Deletion Anomaly: Removing last member deletes club info
 
 ### First Normal Form (1NF)
 **Requirement:** All attributes must be atomic (indivisible)
@@ -185,11 +254,3 @@ WHERE c.ClubName = 'Sports Club';
 |UNION	  |∪	|All students in either club|	Asha, Bikash, Nisha, Suman, Pooja|
 |INTERSECT|	∩	|Students in both clubs|	Asha|
 |EXCEPT	|-	|Students in first but not second	|Asha, Bikash, Nisha, Suman|
-
-## Why JOIN Operations Are Necessary
-After normalization, data is split across tables:
-- Student table - Student details only
-- Club table - Club details only
-- Membership table - Who joined which club
-
-To get complete information, we need JOIN: Student, Memebrship and Club
