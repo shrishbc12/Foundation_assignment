@@ -173,3 +173,9 @@ WHERE c.ClubName = 'Sports Club';
 #### Result
 ![Result](Images/except-result.png)
 
+## Set Operations Summary
+|Operation| Symbol| Description|	Example Result|
+|---------|-------|------------|----------------|
+|UNION	  |∪	|All students in either club|	Asha, Bikash, Nisha, Suman, Pooja|
+|INTERSECT|	∩	|Students in both clubs|	Asha|
+|EXCEPT	|-	|Students in first but not second	|Asha, Bikash, Nisha, Suman|
