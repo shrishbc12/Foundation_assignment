@@ -16,7 +16,7 @@ Demonstrates how **encoding formats** ensure safe data transmission across moder
 ```
 Task1/
 ├── README.md                 # Main documentation 
-├── images/                 
+├── image/                 
 │   ├── base64-docker.png     # Figure 1
 │   ├── url-docker.png        # Figure 2
 │   ├── http-post.png         # Figure 3
@@ -31,7 +31,7 @@ Task1/
 │   ├── oauth-request.png     # Figure 12
 │   └── oauth-response.png    # Figure 13
 │
-└── Scripts/ 
+└── Script/ 
   ├── Base64_encode.sh # Bash script for Base64 encoding
   ├── Url_Encoding.py # Python script for URL encoding
   └── Docker_file_transfer.cmd # file transfer in docker
@@ -68,37 +68,43 @@ Task1/
 
 This demonstration shows secure file transfer between Docker containers using direct CMD commands:
 
-### Step 1: Create and Serve File from Container 1
+### Step 1: Setting up file server in Docker container
 
 Open **Command Prompt (CMD)** and run:
 
-```cmd
-:: Run a Python container and create a file
-docker run -d --name server -p 8081:8081 python:3-slim sh -c "echo 'Hello from Docker Container' > myfile.txt && python -m http.server 8081"
-
-:: Check if container is running
-docker ps
-
-:: Verify file is created
-docker exec server cat myfile.txt
-
-## Four Scripts Overview
-
-| # | Script Name | Language | Purpose |
-|---|-------------|----------|---------|
-| **2** | `Base64_encode.sh` | Bash | Shows Base64 conversion for binary data |
-| **3** | `Url_Encoding.py` | Python | URL encoding/decoding demonstration |
-| **4** | `Docker_file_transfer.cmd` | Commandline | File transfer between Docker containers |
-
----
-
-## Script 1: ASCII_Encoding.ps1
-
-### Purpose
-Demonstrates ASCII encoding standard for text data representation.
-
-### Code
+**Server Container Setup:**
+```bash
+# Create network
+docker network create secure-net
+# Commands I used to create and serve file
+docker run -it --name server-container ubuntu bash
+echo "Hello from Docker Container" > myfile.txt
+python3 -m http.server 8081
 ```
+
+### Step 2: Client Container Download:
+```bash
+# Commands I used to download from another container
+docker run -it --name client-container ubuntu bash
+apt-get update && apt-get install wget
+wget http://<server-ip>:8081/myfile.txt
 ```
-Format-Hex "C:\Users\L E G I 0 N\OneDrive\Desktop\hello.txt.txt" | more
-```
+
+## Security Risks I Identified
+Based on my implementation, these are the key risks:
+
+- **Base64 Malware Hiding:**  Attackers can encode malicious scripts to bypass scanners
+- **URL Encoding Exploits:** Double encoding can bypass WAF filters
+- **Chained Encoding:** Combining multiple encodings hides malicious intent
+
+## Mitigation Strategies Implemented
+- Context-Aware Decoding: Validate after decoding at application entry points
+- TLS Encryption: All transmissions encrypted
+- Secure API Gateway: Centralized validation of REST API payloads
+
+## References from My Assignment
+- Cloudflare. (2025). What is HTTPS?
+- Cloudflare. (2025). What is TLS?
+- GeeksforGeeks. (2023). SMTP and REST API
+- Okta. (2024). What is OAuth 2.0?
+- HackerOne. (2024). URL Encoding Security
