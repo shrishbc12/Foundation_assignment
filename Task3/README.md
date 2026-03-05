@@ -103,6 +103,7 @@ docker exec college_db mysql -uroot -proot123 -t college_club -e "SELECT * FROM 
 # Check Membership table
 docker exec college_db mysql -uroot -proot123 -t college_club -e "SELECT * FROM Membership;"
 ```
+---
 
 ## Database Schema Evolution
 ### Unnormalized Form (Problem Table)
@@ -152,6 +153,8 @@ Output files:
 |2NF| No partial dependencies|	Split Student and Club tables|
 |3NF|	No transitive dependencies|	Added ClubID primary key|
 
+---
+
 ## Entity Relationship Diagram
 
 ![ER Diagram](Images/er-diagram.png)
@@ -161,6 +164,8 @@ Output files:
 - One student can join many clubs
 - One club can have many students
 - Membership table links them with JoinDate
+
+---
 
 ## SQL Operations
 
@@ -187,6 +192,8 @@ After normalization, data is split across tables:
 - Student table - Student details only
 - Club table - Club details only
 - Membership table - Who joined which club
+
+---
 
 ## Set Operations with Venn Diagrams
 ### 1. UNION - Students in Either Club
@@ -261,3 +268,12 @@ WHERE c.ClubName = 'Sports Club';
 |UNION	  |∪	|All students in either club|	Asha, Bikash, Nisha, Suman, Pooja|
 |INTERSECT|	∩	|Students in both clubs|	Asha|
 |EXCEPT	|-	|Students in first but not second	|Asha, Bikash, Nisha, Suman|
+
+---
+
+## References
+- Alexander, S. (2024). What is a database? TechTarget.
+- Gillis, A. S. (2024). Database normalization concepts.
+- Codd, E. F. (1970). A Relational Model of Data for Large Shared Data Banks.
+
+
