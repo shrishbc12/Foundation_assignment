@@ -75,7 +75,7 @@ python Heuristic.py
 **Brute Force (for 4 students)**
 ![brute force seating](Images/brute-force-output.png)
 
-**Heuristic**
+**Heuristic (for 4 students)**
 ![Heuristic seating](Images/heuristic-output.png)
 
 
