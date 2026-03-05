@@ -18,7 +18,6 @@ Task1/
 Task1/
 ├── README.md # This file
 ├── Scripts/ 
-│ ├── ASCII_Encoding.ps1 # Powershell script for ASCII encoding/decoding
 │ ├── Base64_encode.sh # Bash script for Base64 encoding
 │ ├── Url_Encoding.py # Python script for URL encoding
 │ └── Docker_file_transfer.cmd 
@@ -35,7 +34,7 @@ Task1/
   └── Base64 encoding in email transmission.png
 ```
 
-## 🔍 Encoding Formats Covered
+## Encoding Formats Covered
 
 ### 1. ASCII Encoding
 - Standard character encoding system for text data
@@ -52,7 +51,7 @@ Task1/
 - Replaces unsafe characters with % followed by hex digits
 - **Use Case**: Web forms, HTTP requests
 
-## 🔐 Protocol Integration
+## Protocol Integration
 
 | Protocol | Role | Encoding Integration |
 |----------|------|---------------------|
@@ -62,7 +61,7 @@ Task1/
 | **REST API** | Web service communication | JSON with Base64 encoding |
 | **OAuth** | Authorization framework | Token encoding |
 
-## 🐳 Docker Demo: File Transmission Between Containers (CMD)
+## Docker Demo: File Transmission Between Containers (CMD)
 
 This demonstration shows secure file transfer between Docker containers using direct CMD commands:
 
@@ -84,7 +83,6 @@ docker exec server cat myfile.txt
 
 | # | Script Name | Language | Purpose |
 |---|-------------|----------|---------|
-| **1** | `ASCII_Encoding.ps1` | PowerShell | Demonstrates ASCII character encoding/decoding |
 | **2** | `Base64_encode.sh` | Bash | Shows Base64 conversion for binary data |
 | **3** | `Url_Encoding.py` | Python | URL encoding/decoding demonstration |
 | **4** | `Docker_file_transfer.cmd` | Commandline | File transfer between Docker containers |
