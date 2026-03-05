@@ -76,7 +76,7 @@ Output files:
 
 **Solution:** Add ClubID as primary key
 
-## 🔗 Entity Relationship Diagram
+## Entity Relationship Diagram
 
 ![ER Diagram](Images/er-diagram.png)
 
@@ -86,17 +86,14 @@ Output files:
 - One club can have many students
 - Membership table links them with JoinDate
 
-## 💻 SQL Operations
+## SQL Operations
 
 ### Basic SQL Operations
 Output file: [`output/basic_sql_operation_output.txt`](Output/basic_sql_operation_output.txt)
 
 Includes:
-- SELECT * FROM Student
-- SELECT * FROM Club
-- INSERT operations
-- UPDATE operations
-- DELETE operations
+- NSERT (adding new clubs and students)
+- SELECT (viewing all records)
 
 ### JOIN Operation
 Output file: [`output/join_operation_output.txt`](Output/join_operation_output.txt)
@@ -105,5 +102,8 @@ Output file: [`output/join_operation_output.txt`](Output/join_operation_output.t
 SELECT s.StudentName, c.ClubName, m.JoinDate
 FROM Membership m
 JOIN Student s ON m.StudentID = s.StudentID
-JOIN Club c ON m.ClubID = c.ClubID
-ORDER BY s.StudentName;
+JOIN Club c ON m.ClubID = c.ClubID;
+ORDER BY s.StudentName, m.JoinDate;
+```
+
+## Set Operations with Venn Diagrams
