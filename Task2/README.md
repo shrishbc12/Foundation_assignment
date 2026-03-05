@@ -13,11 +13,11 @@ task2/
 ├── README.md                 # Main documentation
 ├── images/                 
 │   ├── seating-scenario.png      # Classroom seating problem illustration
-│   ├── time-complexity-graph.png # Figure 13 - Time Complexity Graph
-│   ├── brute-force-code.png      # Figure 14 - Python brute force implementation
-│   ├── brute-force-output.png    # Figure 15 - Brute force output
-│   ├── heuristic-code.png        # Figure 16 - Heuristic algorithm implementation
-│   └── heuristic-output.png      # Figure 17 - Heuristic algorithm output
+│   ├── time-complexity-graph.png # Figure 1 - Time Complexity Graph
+│   ├── brute-force-code.png      # Figure 2 - Python brute force implementation
+│   ├── brute-force-output.png    # Figure 3 - Brute force output
+│   ├── heuristic-code.png        # Figure 4 - Heuristic algorithm implementation
+│   └── heuristic-output.png      # Figure 5 - Heuristic algorithm output
 │
 └── Scripts/ 
     ├── Brute-force.py    # Python script for brute force approach
